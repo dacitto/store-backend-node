@@ -1,15 +1,31 @@
-import express, { Request, Response } from 'express'
-import bodyParser from 'body-parser'
+import express, { Application, Request, Response } from 'express'
+import cors from 'cors'
+import db from './database'
+// import routes from "./routes";
+import appConf from './config/app.config'
 
-const app: express.Application = express()
-const address: string = "0.0.0.0:3000"
+// ! test data base connection
+try {
+  db.connect()
+  console.log('DB connected ...')
+} catch (error) {
+  console.log(error)
+}
 
-app.use(bodyParser.json())
+const app: Application = express()
+const port = appConf.port || 3000
 
+// Defaul middlewares
+app.use(cors(), express.json())
+
+// Routes
+// app.use("/api", routes);
 app.get('/', function (req: Request, res: Response) {
-    res.send('Hello World!')
+  res.send('Hello Worlsd!')
+})
+// Start the server
+app.listen(port, () => {
+  console.log(`${appConf.name} Server is running on port: ${port}`)
 })
 
-app.listen(3000, function () {
-    console.log(`starting app on: ${address}`)
-})
+export default app
