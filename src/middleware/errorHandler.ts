@@ -13,6 +13,6 @@ export const errorHandler = (
   console.log(err.stack)
   const status = 500
 
-  res.status(status).json({ message: 'something is wrong ⛔' })
+  res.status(status).json({ message: 'something was wrong ⛔' })
   next()
 }

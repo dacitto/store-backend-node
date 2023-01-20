@@ -1,5 +1,5 @@
 export interface User {
-  id: number
+  id: string
   username: string
   first_name: string
   last_name: string
@@ -10,9 +10,3 @@ export interface AuthObject {
   user: User
   token: string
 }
-
-// #### User
-// - id
-// - firstName
-// - lastName
-// - password

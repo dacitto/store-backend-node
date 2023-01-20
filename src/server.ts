@@ -6,7 +6,8 @@ import path from 'path'
 import appConf from './config/app.config'
 import { logger } from './middleware/logger'
 import { errorHandler } from './middleware/errorHandler'
-import rootRouter from './routes/root'
+import { rootRouter } from './routes/root'
+import routes from './routes'
 
 // ! test data base connection
 try {
@@ -25,11 +26,10 @@ app.use(cors(), express.json())
 
 // Routes
 app.use(express.static('public'))
+app.use('/api', routes)
 app.use('/', rootRouter)
 // app.use("/api", routes);
-app.get('/', function (req: Request, res: Response) {
-  res.send('Hello World!')
-})
+
 // Not found pages
 app.all('*', (req: Request, res: Response) => {
   res.status(404)

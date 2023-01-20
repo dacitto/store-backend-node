@@ -4,11 +4,9 @@ import path from 'path'
 const router = express.Router()
 
 // index page route  => /index , /index.html , /
-const rootRouter = router.get(
+export const rootRouter = router.get(
   '^/$|/index(.html)?',
   (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, '../../public/views/index.html'))
   }
 )
-
-export default rootRouter
