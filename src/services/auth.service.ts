@@ -56,12 +56,11 @@ export default class AuthService {
 }
 
 const generateAuthObject = (user: User): AuthObject => {
-  const generatedToken =
-    jwt.sign(
-      { sub: user.username, name: `${user.first_name} ${user.last_name}` },
-      appConf.jwtSecret as string,
-      { expiresIn: '30d' }
-    )
+  const generatedToken = jwt.sign(
+    { sub: user.username, name: `${user.first_name} ${user.last_name}` },
+    appConf.jwtSecret as string,
+    { expiresIn: '30d' }
+  )
   return {
     token: generatedToken,
     user: hidePassword(user),
@@ -71,4 +70,3 @@ const generateAuthObject = (user: User): AuthObject => {
 // get function
 
 export const authUser = (res: Response) => res.locals.user
-

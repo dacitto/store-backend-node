@@ -28,6 +28,7 @@ export default class UserRepository extends Repository<User> {
    * @param {User} user
    * @returns {Promise<User>}
    */
+
   async updateAsync(user: User): Promise<User> {
     const { id, username, first_name, last_name, password } = user
     const result = await DB.query(
@@ -35,5 +36,34 @@ export default class UserRepository extends Repository<User> {
       [username, first_name, last_name, password, id]
     )
     return result.rows[0]
+  }
+
+  /*
+   * * get all users
+   */
+  async usersAsync(): Promise<User[]> {
+    // posts with user
+    const result = await DB.query('SELECT id,username FROM  users')
+    return result?.rows ?? []
+  }
+
+  /**
+   * * get user by id
+   */
+  async singleUserAsync(id: number): Promise<User> {
+    // post with user
+    const user = await DB.query(
+      `
+      SELECT
+      *
+      FROM users
+      WHERE id = $1
+    `,
+      [id]
+    ).catch((err) => {
+      console.log(err)
+      return null
+    })
+    return user?.rows[0] ?? null
   }
 }

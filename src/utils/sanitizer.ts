@@ -2,9 +2,9 @@
 import { User } from '../models/user.model'
 
 const hidePassword = (user: User): User => {
+  const { password, ...rest } = user
   return {
-    ...user,
-    password: '*******',
+    ...rest,
   }
 }
 
