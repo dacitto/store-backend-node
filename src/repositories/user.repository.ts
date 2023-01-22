@@ -14,7 +14,7 @@ export default class UserRepository extends Repository<User> {
    * @param {User} user
    * @returns {Promise<User>}
    */
-  async createAsync(user: User): Promise<User> {
+  async createAsync(user: Omit<User, 'id'>): Promise<User> {
     const { username, first_name, last_name, password } = user
     const result = await DB.query(
       'INSERT INTO users (username, first_name, last_name, password) VALUES ($1, $2, $3, $4) RETURNING *',
