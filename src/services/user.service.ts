@@ -49,5 +49,3 @@ export default class UserService {
     return createdUser
   }
 }
-
-export const user = (res: Response) => res.locals.user

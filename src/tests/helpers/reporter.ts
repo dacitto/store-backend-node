@@ -3,20 +3,20 @@ import {
   SpecReporter,
   StacktraceOption,
 } from 'jasmine-spec-reporter'
-import SuiteInfo = jasmine.JasmineStartedInfo //SuiteInfo is "deprecated"
+import JasmineStartedInfo = jasmine.JasmineStartedInfo
 
 class CustomProcessor extends DisplayProcessor {
-  public displayJasmineStarted(info: SuiteInfo, log: string): string {
-    return `${info} ${log}`
+  public displayJasmineStarted(info: JasmineStartedInfo, log: string): string {
+    return `=> ${info}: ${log}`
   }
 }
 
 jasmine.getEnv().clearReporters()
 jasmine.getEnv().addReporter(
-  new {
+  new SpecReporter({
     spec: {
-      displayStacktrace: StacktraceOption.NONE,
+      displayStacktrace: StacktraceOption.PRETTY,
     },
     customProcessors: [CustomProcessor],
-  }() as CustomProcessor
+  })
 )

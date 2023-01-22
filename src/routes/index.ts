@@ -1,7 +1,7 @@
 import express from 'express'
-import { authorized } from '../middleware/auth.guard'
 import authRoutes from './auth.routes'
 import userRoutes from './user.routes'
+import productRoute from './product.routes'
 
 const appRouter = express.Router()
 
@@ -10,5 +10,6 @@ const appRouter = express.Router()
  */
 appRouter.use('/auth', authRoutes)
 appRouter.use('/users', userRoutes)
+appRouter.use('/products', productRoute)
 
 export default appRouter
