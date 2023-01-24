@@ -15,10 +15,10 @@ export default class OrderRepository extends Repository<Order> {
    * @returns {Promise<Order>}
    */
   async createAsync(Order: Omit<Order, 'id'>): Promise<Order> {
-    const { product_id, quantity, status_of_order, user_id } = Order
+    const { status_of_order, user_id } = Order
     const result = await DB.query(
-      'INSERT INTO orders (product_id,quantity,status_of_order,user_id ) VALUES ($1, $2,$3,$4) RETURNING *',
-      [product_id, quantity, status_of_order, user_id]
+      'INSERT INTO orders (status_of_order,user_id ) VALUES ($1, $2) RETURNING *',
+      [status_of_order, user_id]
     )
     return result.rows[0]
   }
@@ -30,10 +30,10 @@ export default class OrderRepository extends Repository<Order> {
    */
 
   async updateAsync(Order: Order): Promise<Order> {
-    const { id, product_id, quantity, status_of_order, user_id } = Order
+    const { id, status_of_order, user_id } = Order
     const result = await DB.query(
-      'UPDATE orders SET product_id=$1,quantity=$2,status_of_order=$3,user_id=$4, WHERE id = $5 RETURNING *',
-      [product_id, quantity, status_of_order, user_id, id]
+      'UPDATE orders SET status_of_order=$1,user_id=$2, WHERE id = $3 RETURNING *',
+      [status_of_order, user_id, id]
     )
     return result.rows[0]
   }

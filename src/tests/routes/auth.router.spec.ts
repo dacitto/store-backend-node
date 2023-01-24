@@ -17,17 +17,17 @@ describe('Test Auth endpoints responses', () => {
     expect(response.status).toBe(401) // Unauthorized
   })
 
-  it('auth/login', async () => {
-    await request
-      .post('/api/auth/login')
-      .send({ username: 'user1', password: '123@Test' })
-      .expect(200) // Ok
-  })
   it('api/auth/register', async () => {
     await request
       .post('/api/auth/register')
       .set('Accept', 'application/json')
       .send(newUser)
       .expect(201) // created
+  })
+  it('auth/login', async () => {
+    await request
+      .post('/api/auth/login')
+      .send({ username: newUser.username, password: newUser.password })
+      .expect(200) // Ok
   })
 })

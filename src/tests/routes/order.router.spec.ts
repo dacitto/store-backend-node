@@ -12,9 +12,7 @@ const registeredUser: User = {
 }
 
 const newOrder: Omit<Order, 'id'> = {
-  product_id: 2,
-  quantity: 3,
-  user_id: 4,
+  user_id: registeredUser.id,
   status_of_order: 'active',
 }
 const request = supertest(app)
@@ -66,7 +64,7 @@ describe('Test order endpoints responses', async () => {
       .expect(201) // Created
   })
 
-  it('api/orders/ordersByUser/:userId get  Current (active) Orders by  a user ', async () => {
+  it('api/orders/ordersByUser/:userId get active Orders by  a user ', async () => {
     await request
       .get(`/api/orders/ordersByUser/${registeredUser.id}`)
       .set('Content-type', 'application/json')
