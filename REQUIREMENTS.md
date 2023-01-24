@@ -139,9 +139,18 @@ TABLE orders
 ```sql
     id serial PRIMARY KEY,
     user_id INT,
-    product_id INT,
     status_of_order VARCHAR(255) NOT NULL,
+    CONSTRAINT fk_user FOREIGN KEY (user_id)
+    REFERENCES users(id)
+```
+
+TABLE order_products
+
+```sql
+    id serial PRIMARY KEY,
+    order_id INT,
+    product_id INT,
     quantity INT,
-    CONSTRAINT fk_product FOREIGN KEY(product_id) REFERENCES products(id),
-    CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES users(id)
+    CONSTRAINT fk_product FOREIGN KEY (product_id) REFERENCES products(id),
+    CONSTRAINT fk_order FOREIGN KEY (order_id) REFERENCES orders(id)
 ```
