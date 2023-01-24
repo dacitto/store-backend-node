@@ -13,7 +13,7 @@
     "db:up": "db-migrate up",
     "db:down": "db-migrate reset",
     "prettier": "npx prettier --write ./src/**/*.ts",
-    "test": "npm run build&&set ENVIRONMENT=test&&db-migrate --env test up&&jasmine&&db-migrate --env test reset"
+    "test": "npm run build && set ENVIRONMENT=test && db-migrate --env test up && jasmine && db-migrate --env test reset"
   },
   "author": "Udacity",
   "license": "ISC",
@@ -28,6 +28,7 @@
     "jsonwebtoken": "^9.0.0",
     "pg": "^8.5.1",
     "typescript": "^4.1.3",
+    "unique-username-generator": "^1.1.3",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
@@ -50,4 +51,3 @@
     "tsc-watch": "^4.2.9"
   }
 }
-
