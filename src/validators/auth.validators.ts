@@ -22,8 +22,8 @@ const validateLoginRequest = (
     errorsBag.push('Password is required')
   }
 
-  return errorsBag.length > 0 ?
-    unprocessableEntityResponse(res, errorsBag)
+  return errorsBag.length > 0
+    ? unprocessableEntityResponse(res, errorsBag)
     : next()
 }
 
@@ -55,36 +55,36 @@ const validateRegisterRequest = async (
   }
 
   if (!first_name) {
-    errorsBag.push('First name is required')
+    errorsBag.push('first_name is required')
   } else {
     if (first_name.length < 2) {
-      errorsBag.push('First name must be at least 2 characters')
+      errorsBag.push('first_name must be at least 2 characters')
     }
 
     // no numbers
     if (!/^[a-zA-Z]+$/.test(first_name)) {
-      errorsBag.push('First name must contain only letters')
+      errorsBag.push('first_name must contain only letters')
     }
   }
 
   if (!last_name) {
-    errorsBag.push('Last name is required')
+    errorsBag.push('last_name is required')
   } else {
     if (last_name.length < 2) {
-      errorsBag.push('Last name must be at least 2 characters')
+      errorsBag.push('last_name must be at least 2 characters')
     }
 
     // no numbers
     if (!/^[a-zA-Z]+$/.test(last_name)) {
-      errorsBag.push('Last name must contain only letters')
+      errorsBag.push('last_name must contain only letters')
     }
   }
 
   if (!password) {
-    errorsBag.push('Password is required')
+    errorsBag.push('password is required')
   } else {
     if (password.length < 8) {
-      errorsBag.push('Password must be at least 8 characters long')
+      errorsBag.push('password must be at least 8 characters long')
     }
 
     // strong password regex
@@ -94,13 +94,13 @@ const validateRegisterRequest = async (
 
     if (!strongRegex.test(password)) {
       errorsBag.push(
-        'Password must contain at least one lowercase letter, one uppercase letter, one number and one special character'
+        'password must contain at least one lowercase letter, one uppercase letter, one number and one special character'
       )
     }
   }
 
-  return errorsBag.length > 0 ?
-    unprocessableEntityResponse(res, errorsBag)
+  return errorsBag.length > 0
+    ? unprocessableEntityResponse(res, errorsBag)
     : next()
 }
 

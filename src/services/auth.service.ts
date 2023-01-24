@@ -55,7 +55,7 @@ export default class AuthService {
   }
 }
 
-const generateAuthObject = (user: User): AuthObject => {
+export const generateAuthObject = (user: User): AuthObject => {
   const generatedToken = jwt.sign(
     { sub: user.username, name: `${user.first_name} ${user.last_name}` },
     appConf.jwtSecret as string,
