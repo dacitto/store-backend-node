@@ -5,8 +5,8 @@ import { validateRegisterRequest } from '../validators/auth.validators'
 const userRoute = express.Router()
 const _controller = userController
 
-userRoute.post('/', authorized, _controller.index)
-userRoute.post('/show/:id', authorized, _controller.getUserById)
+userRoute.get('/', authorized, _controller.index)
+userRoute.get('/show/:id', authorized, _controller.getUserById)
 userRoute.post(
   '/create',
   authorized,
