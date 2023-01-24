@@ -1,56 +1,202 @@
 # Storefront Backend Project
 
-## Getting Started
+Storefront Backend Project is the second project in the [Udacity’s Full Stack JavaScript Developer Nanodegree](https://www.udacity.com/course/full-stack-javascript-developer-nanodegree--nd0067).
 
-This repo contains a basic Node and Express app to get you started in constructing an API. To get started, clone this repo and run `yarn` in your terminal at the project root.
+# Project Overview
 
-## Required Technologies
+Imagine that you are a web developer at a small company. The company stakeholders have decided they want to set up an online store to make their great product ideas available for purchase -- and they want you and your co-worker to build it.
 
-Your application must make use of the following libraries:
-[X] Postgres for the database
-[X] Node/Express for the application logic
-[X] dotenv from npm for managing environment variables
-[X] db-migrate from npm for migrations
-[X] jsonwebtoken from npm for working with JWTs
-[X] jasmine from npm for testing
+The stakeholders have put together a list of requirements for this online store. Your co-worker will be building the frontend and you will be supplying the JavaScript API. The requirements have been collected into requirements document.
 
-## Steps to Completion
+Your job is to architect the database, its tables and columns to fulfill the data requirements and craft a RESTful API that exposes that information to the frontend developer.
 
-### 1. Plan to Meet Requirements
+Your application needs to be ready for beta tests, so it needs to have tests, keep user information secure, and provide user authentication tokens that are ready to integrate with the frontend.
 
-In this repo there is a `REQUIREMENTS.md` document which outlines what this API needs to supply for the frontend, as well as the agreed upon data shapes to be passed between front and backend. This is much like a document you might come across in real life when building or extending an API.
+# Technologies and tools
 
-Your first task is to read the requirements and update the document with the following:
+#### Server
 
-- Determine the RESTful route for each endpoint listed. Add the RESTful route and HTTP verb to the document so that the frontend developer can begin to build their fetch requests.  
-  **Example**: A SHOW route: 'blogs/:id' [GET]
+- [NodeJs](https://nodejs.org/)
+- [Express](https://expressjs.com/)
+- [Typescript](https://www.typescriptlang.org/)
 
-- Design the Postgres database tables based off the data shape requirements. Add to the requirements document the database tables and columns being sure to mark foreign keys.  
-  **Example**: You can format this however you like but these types of information should be provided
-  Table: Books (id:varchar, title:varchar, author:varchar, published_year:varchar, publisher_id:string[foreign key to publishers table], pages:number)
+#### Database
 
-**NOTE** It is important to remember that there might not be a one to one ratio between data shapes and database tables. Data shapes only outline the structure of objects being passed between frontend and API, the database may need multiple tables to store a single shape.
+- [Postgresql](https://www.postgresql.org/)
 
-### 2. DB Creation and Migrations
+#### Tests
 
-Now that you have the structure of the databse outlined, it is time to create the database and migrations. Add the npm packages dotenv and db-migrate that we used in the course and setup your Postgres database. If you get stuck, you can always revisit the database lesson for a reminder.
+- [Jasmine](https://jasmine.github.io/)
+- [Supertest](https://github.com/ladjs/supertest#readme)
 
-You must also ensure that any sensitive information is hashed with bcrypt. If any passwords are found in plain text in your application it will not pass.
+#### Code Formatters
 
-### 3. Models
+- [Prettier](https://prettier.io/)
+- [Eslint](https://eslint.org/)
 
-Create the models for each database table. The methods in each model should map to the endpoints in `REQUIREMENTS.md`. Remember that these models should all have test suites and mocks.
+## API Endpoints
 
-### 4. Express Handlers
+#### Products
 
-Set up the Express handlers to route incoming requests to the correct model method. Make sure that the endpoints you create match up with the enpoints listed in `REQUIREMENTS.md`. Endpoints must have tests and be CORS enabled.
+- Index
+  - GET
+  - `http://localhost:3000/api/products`
+- Show
+  - GET
+  - `http://localhost:3000/api/products/:id`
+- Create [token required]
+  - POST
+  - `http://localhost:3000/api/products/create`
+  ```js
+   {
+   product_name: string,
+   price: number,
+   }
+  ```
 
-### 5. JWTs
+#### Users
 
-Add JWT functionality as shown in the course. Make sure that JWTs are required for the routes listed in `REQUIUREMENTS.md`.
+- Index [token required]
+  - GET `http://localhost:3000/api/users`
+- Show [token required]
+  - GET
+  - `http://localhost:3000/api/show/:userId`
+- Create a new user[token required]
+  - POST
+  - `http://localhost:3000/api/users/create`
+  ```js
+   {
+   username: string,
+   first_name: string,
+   last_name:string,
+   password: string
+   }
+  ```
 
-### 6. QA and `README.md`
+#### Auth
 
-Before submitting, make sure that your project is complete with a `README.md`. Your `README.md` must include instructions for setting up and running your project including how you setup, run, and connect to your database.
+- register
+  - POST
+  - `http://localhost:3000/api/auth/register`
+  - request body
+    ```js
+    {
+        username:string,
+        password:string
+    }
+    ```
+- Login
+  - POST
+  - `http://localhost:3000/api/auth/login`
+  - request body
+    ```js
+    {
+    username: string,
+    first_name: string,
+    last_name:string,
+    password: string
+    }
+    ```
 
-Before submitting your project, spin it up and test each endpoint. If each one responds with data that matches the data shapes from the `REQUIREMENTS.md`, it is ready for submission!
+#### Orders
+
+- Index [token required] (all orders)
+- GET `http://localhost:3000/api/orders`
+- Show [token required]
+- GET
+- `http://localhost:3000/api/orders/:orderId`
+- Create New Order[token required]
+
+- POST
+- `http://localhost:3000/api/order/create`
+
+  - request body
+    ```js
+    {
+    product_name: string,
+    price: number,
+    }
+    ```
+
+- Current Order by user (args: user id)[token required]
+  - GET
+  - `http://localhost:3000/api/orders/ordersByUser/:userId`
+- Current All Orders [token required]
+  - GET
+  - `http://localhost:3000/api/orders/`
+- Current specific Order [token required]
+  - GET
+  - `http://localhost:3000/api/orders/:orderId`
+- Create an order
+  - POST
+  - `http://localhost:3000/api/orders/create`
+  - request body
+    ```
+    {
+    product_name: string,
+    price: number,
+    }
+    ```
+
+## Installation
+
+#### Requirements
+
+- postgress
+
+  - you have to create two databases:
+    `store` and `store_test`
+
+- npm
+  - you have to install `db-migrate` globaly by runinig the following command:
+  ```
+  npm i -g db-migrate
+  ```
+
+### To run the app you need to:
+
+open the project directory with cmd, then you can run the following commands:
+
+- open the project directory then use the following commend
+
+`npm i` or `pnpm i` to install project dependencies.
+
+- create `.env` file and copy the `.env.example` to it.
+
+```s
+ENVIRONMENT='dev'
+APP_NAME='store-backend'
+PORT=3000
+
+POSTGRES_HOST='localhost'
+POSTGRES_PORT=5432
+POSTGRES_USER='postgres'
+POSTGRES_PASSWORD='Pass123'
+POSTGRES_DB='store'
+POSTGRES_TEST_DB='store_test'
+#  create Jwt Secret Rounds pepper
+JWT_SECRET='tugffjeh322 1'
+BCRYPT_ROUNDS=5
+BCRYPT_PASSWORD_PEPPER =RX
+
+```
+
+- run `db-migrate up` to migrate the database.
+- run server using `npm watch` or `pnpm watch`
+  The server will run on [localhost:3000](http://localhost:3000/).
+
+## Other useful commands:
+
+- `npm run build` compile typescript to /dist folder
+- `npm run lint` run Eslint
+- `npm run test` run unit tests (jasmine)
+- `npm run start` start the server on production mode
+- `npm run prettier` formate the code
+- `npm run dev` watch the project in development mode
+- `npm run tsc` compile typescript
+- `db:up` database megrate up
+- `db:down tsc` database megrate down
+
+#### Special Thanks to Our session lead:
+
+- [Mahmoud Kassem](https://github.com/mahkassem).

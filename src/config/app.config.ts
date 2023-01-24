@@ -9,7 +9,7 @@ const appConfig = {
   port: Number(process.env.PORT) || 3000,
   jwtSecret: process.env.JWT_SECRET,
   bcryptSalt: Number(process.env.BCRYPT_ROUNDS) || 10,
-  bcryptPaper: process.env.BCRYPT_PASSWORD_PAPER,
+  bcryptPaper: process.env.BCRYPT_PASSWORD_PEPPER,
 }
 
 export default appConfig
