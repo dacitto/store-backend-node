@@ -187,12 +187,9 @@ BCRYPT_PASSWORD_PEPPER =RX
 
 ## Other useful commands:
 
-- `npm run build` compile typescript to /dist folder
 - `npm run lint` run Eslint
 - `npm run test` run unit tests (jasmine)
-- `npm run start` start the server on production mode
 - `npm run prettier` formate the code
-- `npm run dev` watch the project in development mode
 - `npm run tsc` compile typescript
 - `db:up` database megrate up
 - `db:down tsc` database megrate down
