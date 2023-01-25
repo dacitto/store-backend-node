@@ -142,10 +142,32 @@ Your application needs to be ready for beta tests, so it needs to have tests, ke
 
 #### Requirements
 
-- postgress
+##### Database configuration
+
+- database `postgress`
+  the postgress database is will run on default port`5432`
+  default username
 
   - you have to create two databases:
-    `store` and `store_test`
+    `store` and `store_test` by runing the next commands:
+
+  ```sql
+  CREATE DATABASE store;
+  CREATE DATABASE store_test;
+  ```
+
+  **Note:** you can change database port and username, databases by change the following envirement variables :
+
+  ```shell
+  POSTGRES_HOST='localhost'
+  POSTGRES_PORT=5432
+  POSTGRES_USER='postgres'
+  POSTGRES_PASSWORD='postgres'
+  POSTGRES_DB='store'
+  POSTGRES_TEST_DB='store_test'
+  ```
+
+  you can add the needed tables by runing the sql scripts
 
 - npm
   - you have to install `db-migrate` globaly by runinig the following command:
@@ -167,21 +189,24 @@ open the project directory with cmd, then you can run the following commands:
 ENVIRONMENT='dev'
 APP_NAME='store-backend'
 PORT=3000
-
 POSTGRES_HOST='localhost'
 POSTGRES_PORT=5432
 POSTGRES_USER='postgres'
-POSTGRES_PASSWORD='Pass123'
+POSTGRES_PASSWORD='postgres'
 POSTGRES_DB='store'
 POSTGRES_TEST_DB='store_test'
 #  create Jwt Secret Rounds pepper
-JWT_SECRET='tugffjeh322 1'
+JWT_SECRET='tugffjeh3221'
 BCRYPT_ROUNDS=5
-BCRYPT_PASSWORD_PEPPER =RX
-
+BCRYPT_PASSWORD_PEPPER=RX
 ```
 
-- run `db-migrate up` to migrate the database.
+- to migrate the database run
+
+```
+db-migrate up
+```
+
 - run server using `npm watch` or `pnpm watch`
   The server will run on [localhost:3000](http://localhost:3000/).
 
