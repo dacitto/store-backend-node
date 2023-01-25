@@ -142,6 +142,18 @@ Your application needs to be ready for beta tests, so it needs to have tests, ke
 
 ## Requirements
 
+you can install **postgresql** on your machine or run it on **docker**
+
+if you use **docker** then you need (after config `.env` variables):
+
+1- open the terminal on the project directory
+
+2- run docker compose commnd
+
+```
+docker compose up -d
+```
+
 ### Database configuration
 
 - database user `postgres`
@@ -149,6 +161,20 @@ Your application needs to be ready for beta tests, so it needs to have tests, ke
 - database (default) port `5432`
 - you have to create two databases:
   `store` and `store_test` by runing the next commands:
+
+  1- open the `psql` terminal
+
+  2- enter the given informations
+
+  ```
+  Server [localhost]:
+  Database [postgres]:
+  Port [5432]:
+  Username [postgres]:
+  Password for user postgres:
+  ```
+
+  3- create the databases
 
   ```sql
   CREATE DATABASE store;
