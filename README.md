@@ -146,7 +146,7 @@ Your application needs to be ready for beta tests, so it needs to have tests, ke
 
 - database user `postgres`
 - database password `postgres`
-- default port `5432`
+- database (default) port `5432`
 - you have to create two databases:
   `store` and `store_test` by runing the next commands:
 
