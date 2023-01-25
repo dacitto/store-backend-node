@@ -138,18 +138,17 @@ Your application needs to be ready for beta tests, so it needs to have tests, ke
     }
     ```
 
-## Installation
+# Installation
 
-#### Requirements
+## Requirements
 
-##### Database configuration
+### Database configuration
 
-- database `postgress`
-  the postgress database is will run on default port`5432`
-  default username
-
-  - you have to create two databases:
-    `store` and `store_test` by runing the next commands:
+- database user `postgres`
+- database password `postgres`
+- default port `5432`
+- you have to create two databases:
+  `store` and `store_test` by runing the next commands:
 
   ```sql
   CREATE DATABASE store;
@@ -174,6 +173,7 @@ Your application needs to be ready for beta tests, so it needs to have tests, ke
   ```
   npm i -g db-migrate
   ```
+  You can see the database tables in [REQUIREMENTS.md](REQUIREMENTS.md)
 
 ### To run the app you need to:
 
@@ -186,19 +186,20 @@ open the project directory with cmd, then you can run the following commands:
 - create `.env` file and copy the `.env.example` to it.
 
 ```s
-ENVIRONMENT='dev'
+ENVIRONMENT=dev
 APP_NAME='store-backend'
 PORT=3000
-POSTGRES_HOST='localhost'
+
+POSTGRES_HOST=localhost
 POSTGRES_PORT=5432
-POSTGRES_USER='postgres'
-POSTGRES_PASSWORD='postgres'
-POSTGRES_DB='store'
-POSTGRES_TEST_DB='store_test'
-#  create Jwt Secret Rounds pepper
-JWT_SECRET='tugffjeh3221'
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=store
+POSTGRES_TEST_DB=store_test
+
+JWT_SECRET=tugffjeh3221
 BCRYPT_ROUNDS=5
-BCRYPT_PASSWORD_PEPPER=RX
+BCRYPT_PASSWORD_PAPER=RX
 ```
 
 - to migrate the database run
@@ -216,8 +217,8 @@ db-migrate up
 - `npm run test` run unit tests (jasmine)
 - `npm run prettier` formate the code
 - `npm run tsc` compile typescript
-- `db:up` database megrate up
-- `db:down tsc` database megrate down
+- `npm run db:up` database megrate up
+- `npm run db:down` database megrate down
 
 #### Special Thanks to Our session lead:
 
