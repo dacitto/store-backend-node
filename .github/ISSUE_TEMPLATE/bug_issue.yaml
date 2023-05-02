@@ -1,0 +1,42 @@
+name: Bug Report
+
+about: Use this template to report a bug or issue.
+
+title: '[BUG]'
+
+labels:
+  - bug
+
+assignees:
+  - ''
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Bug Description
+        Provide a clear and concise description of the bug you have encountered.
+
+        ## Steps to Reproduce
+        Please provide a detailed list of steps to reproduce the issue you are reporting.
+        1. 
+        2. 
+        3. 
+
+        ## Expected Behavior
+        Describe what you expected to happen when you performed the steps above.
+
+        ## Actual Behavior
+        Describe what actually happened when you performed the steps above.
+
+        ## Screenshots
+        If applicable, add screenshots to help explain your problem.
+
+        ## Environment Information
+        Please provide information about the environment you were in when the bug occurred:
+        - Operating System:
+        - Browser/Device:
+        - Version:
+
+        ## Additional Information
+        Include any additional information or context that you think might be relevant.
