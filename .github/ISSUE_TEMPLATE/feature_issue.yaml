@@ -1,39 +1,25 @@
-name: New Feature
-
-about: Use this template to propose a new feature or enhancement.
-
-title: '[FEATURE]'
-
-labels:
-  - enhancement
-
-assignees:
-  - ''
-
+name: Feature Request
+description: New feature
+title: '[Feature]: '
+labels: ['feature']
 body:
   - type: markdown
     attributes:
       value: |
-        ## Feature Description
-        Provide a clear and concise description of the feature you are proposing.
+        Thanks for taking the time to suggest a new feature!
+  - type: textarea
+    id: what-feature
+    attributes:
+      label: What is the feature you're proposing?
+      placeholder: 'Describe the feature here'
+    validations:
+      required: true
 
-        ## Possible Implementation
-        Outline a possible approach to implementing this feature, if you have one.
-
-        ## Additional Information
-        Include any additional information or context that you think might be relevant.
-
-        ## Acceptance Criteria
-        Outline the criteria that this feature needs to meet in order to be considered complete.
-
-        ## Priority
-        Select the priority of the feature request:
-        - [ ] High
-        - [ ] Medium
-        - [ ] Low
-
-        ## Timeframe
-        Indicate when this feature is needed:
-        - [ ] ASAP
-        - [ ] Next Release
-        - [ ] Future Release
+  - type: textarea
+    id: how-feature
+    attributes:
+      label: How do you envision this feature working?
+      placeholder: 'Explain how you think this feature should work'
+      value: ''
+    validations:
+      required: false
