@@ -20,6 +20,5 @@ body:
     attributes:
       label: How do you envision this feature working?
       placeholder: 'Explain how you think this feature should work'
-      value: ''
     validations:
       required: false
