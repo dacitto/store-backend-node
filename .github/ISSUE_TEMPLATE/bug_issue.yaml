@@ -16,13 +16,13 @@ body:
     validations:
       required: true
    - type: dropdown
-    id: devices
-    attributes:
-      label: What device are you seeing the problem on?
-      multiple: true
-      options:
-        - Mobile
-        - PC
+      id: devices
+      attributes:
+        label: What device are you seeing the problem on?
+        multiple: true
+        options:
+          - Mobile
+          - PC
   - type: dropdown
     id: browsers
     attributes:
