@@ -1,6 +1,6 @@
 name: Bug Report
 description: File a bug report
-title: "test"
+title: ""
 labels: ["bug"]
 body:
   - type: markdown
@@ -15,10 +15,6 @@ body:
       placeholder: Tell us what you see!
     validations:
       required: true
-   - type: markdown
-    attributes:
-      value: |
-        Include screenshots :camera_flash:
   - type: dropdown
     id: devices
     attributes:
