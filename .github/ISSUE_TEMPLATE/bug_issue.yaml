@@ -18,7 +18,7 @@ body:
    - type: markdown
     attributes:
       value: |
-        ## Include screenshots 📷
+        Include screenshots :camera_flash:
   - type: dropdown
     id: devices
     attributes:
