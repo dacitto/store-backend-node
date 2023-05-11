@@ -1,6 +1,6 @@
 name: Bug Report
 description: File a bug report
-title: "[Bug]: "
+title: ""
 labels: ["bug"]
 body:
   - type: markdown
@@ -15,6 +15,10 @@ body:
       placeholder: Tell us what you see!
     validations:
       required: true
+   - type: markdown
+    attributes:
+      value: |
+        ## Include screenshots 📷
   - type: dropdown
     id: devices
     attributes:
@@ -39,9 +43,3 @@ body:
       label: Relevant log output
       description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
       render: shell
-
-  - type: markdown
-    attributes:
-      value: |
-        ## Include screenshots 📷
-        A great free mockup tool you can use is [Excalidraw](https://excalidraw.com)
