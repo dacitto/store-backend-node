@@ -81,20 +81,21 @@ Your application needs to be ready for beta tests, so it needs to have tests, ke
   - request body
     ```js
     {
-        username:string,
-        password:string
+    username: string,
+    first_name: string,
+    last_name:string,
+    password: string
     }
     ```
+
 - Login
   - POST
   - `http://localhost:3000/api/auth/login`
   - request body
     ```js
     {
-    username: string,
-    first_name: string,
-    last_name:string,
-    password: string
+        username:string,
+        password:string
     }
     ```
 
